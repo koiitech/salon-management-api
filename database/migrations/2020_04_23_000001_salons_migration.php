@@ -19,6 +19,7 @@ class SalonsMigration extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('description')->nullable();
+            $table->string('image');
             $table->softDeletes()->nullable()->comment('Xóa tạm');
             $table->timestamps();
         });
@@ -27,15 +28,14 @@ class SalonsMigration extends Migration
         Schema::create('facilities', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->string('image');
             $table->string('description');
+            $table->string('image');
             $table->timestamps();
             $table->softDeletes()->nullable()->comment('Xóa tạm');
         });
 
         Schema::create('brands', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->primary('id');
+            $table->uuid('id')->primary();
             $table->string('name')->comment('Tên tiệm');
             $table->text('cover')->nullable()->comment('Ảnh cover');
             $table->text('logo')->nullable()->comment('Logo');
@@ -49,7 +49,6 @@ class SalonsMigration extends Migration
             $table->text('cover')->nullable()->comment('Ảnh cover');
             $table->text('logo')->nullable()->comment('Logo');
             $table->string('address')->nullable();
-            $table->boolean('is_brand')->default(false)->comment('True là thương hiệu, false là quán');
             $table->float('latitude', 10, 6)->nullable()->comment('Kinh độ');
             $table->float('longitude', 10, 6)->nullable()->comment('Vĩ độ');
             $table->text('description')->nullable()->comment('Mô tả');
@@ -81,7 +80,6 @@ class SalonsMigration extends Migration
          * Bảng liên kết Salons - Facilities ( n-n )
          */
         Schema::create('salons_facilities', function (Blueprint $table) {
-            $table->uuid('id')->primary();
             $table->string('salon_id', 42);
             $table->string('facility_id', 42);
             $table->foreign('salon_id')
