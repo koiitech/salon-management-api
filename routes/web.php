@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test', function () {
+    $user = App\User::first();
+    $token = $user->createToken('Token Name');
+    return $token;
+});
