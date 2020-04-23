@@ -5,3 +5,4 @@ php artisan passport:install
 php artisan passport:client --personal
 ```
 
+Artisan::call('cache:clear');
