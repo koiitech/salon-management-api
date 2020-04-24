@@ -6,7 +6,7 @@ use App\Models\Concerns\UsesUuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Business extends Model
+class Facility extends Model
 {
     use UsesUuid;
 

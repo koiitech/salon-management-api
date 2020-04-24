@@ -4,7 +4,7 @@
 
 use App\Brand;
 use App\Business;
-use App\Facilities;
+use App\Facility;
 use App\Salon;
 use App\User;
 use Faker\Generator as Faker;
@@ -23,36 +23,36 @@ use Illuminate\Support\Str;
 
 $factory->define(Business::class, function (Faker $faker) {
   return [
-    'name' => $faker->name,
+    'name' => $faker->sentence($nbWords = 4, $variableNbWords = true),
     'description' => $faker->paragraph,
-    'image' => $faker->image(300, 300),
+    'image' => $faker->imageUrl(300, 300),
   ];
 });
 
-$factory->define(Facilities::class, function (Faker $faker) {
+$factory->define(Facility::class, function (Faker $faker) {
   return [
-    'name' => $faker->name,
+    'name' => $faker->sentence($nbWords = 4, $variableNbWords = true),
     'description' => $faker->paragraph,
-    'image' => $faker->image(300, 300),
+    'image' => $faker->imageUrl(300, 300),
   ];
 });
 
 $factory->define(Brand::class, function (Faker $faker) {
   return [
-    'name' => $faker->name,
+    'name' => $faker->sentence($nbWords = 4, $variableNbWords = true),
     'description' => $faker->paragraph,
-    'logo' => $faker->image(300, 300),
-    'cover' => $faker->image(900, 250),
+    'logo' => $faker->imageUrl(300, 300),
+    'cover' => $faker->imageUrl(900, 250),
     'address' => $faker->address,
   ];
 });
 
 $factory->define(Salon::class, function (Faker $faker) {
   return [
-    'name' => $faker->name,
+    'name' => $faker->sentence($nbWords = 4, $variableNbWords = true),
     'description' => $faker->paragraph,
-    'logo' => $faker->image(300, 300),
-    'cover' => $faker->image(900, 250),
+    'logo' => $faker->imageUrl(300, 300),
+    'cover' => $faker->imageUrl(900, 250),
     'address' => $faker->address,
   ];
 });

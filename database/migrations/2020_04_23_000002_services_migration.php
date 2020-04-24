@@ -17,7 +17,7 @@ class ServicesMigration extends Migration
       $table->uuid('id')->primary();
       $table->string('name')->comment('Tên nhóm');
       $table->string('image')->comment('Tên nhóm');
-      $table->string('description')->comment('Mô tả');
+      $table->text('description')->comment('Mô tả');
       $table->integer('index')->default(0)->comment('Vị trí của menu');
       $table->timestamps();
       $table->softDeletes();
@@ -46,7 +46,7 @@ class ServicesMigration extends Migration
     Schema::create('extras', function (Blueprint $table) {
       $table->uuid('id')->primary();
       $table->string('name')->comment('Tên extra');
-      $table->string('description')->comment('Mô tả');
+      $table->text('description')->comment('Mô tả');
       $table->string('image')->nullable()->comment('Hình ảnh');
       $table->integer('index')->default(0)->comment('Bị trí của extra');
       $table->timestamps();

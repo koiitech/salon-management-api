@@ -2,6 +2,7 @@
 
 use App\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 
 class SalonSeeder extends Seeder
 {
@@ -15,7 +16,7 @@ class SalonSeeder extends Seeder
     $users = User::all();
 
     $businesses = factory(App\Business::class, 10)->create()->pluck('id')->toArray();
-    $facilities = factory(App\Facilities::class, 10)->create()->pluck('id')->toArray();
+    $facilities = factory(App\Facility::class, 10)->create()->pluck('id')->toArray();
 
 
     foreach ($users as $key => $user) {
@@ -26,8 +27,8 @@ class SalonSeeder extends Seeder
       $brand->salons()->saveMany($salons);
 
       foreach ($salons as $key => $salon) {
-        $salon->businesses->attach(array_rand($businesses, 3));
-        $salon->facilities->attach(array_rand($facilities, 4));
+        $salon->businesses()->sync(Arr::random($businesses, 3));
+        $salon->facilities()->sync(Arr::random($facilities, 4));
       }
     }
   }

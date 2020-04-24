@@ -18,7 +18,7 @@ class SalonsMigration extends Migration
         Schema::create('businesses', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('image');
             $table->softDeletes()->nullable()->comment('Xóa tạm');
             $table->timestamps();
@@ -28,7 +28,7 @@ class SalonsMigration extends Migration
         Schema::create('facilities', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->string('image');
             $table->timestamps();
             $table->softDeletes()->nullable()->comment('Xóa tạm');
@@ -41,6 +41,12 @@ class SalonsMigration extends Migration
             $table->text('logo')->nullable()->comment('Logo');
             $table->string('address')->nullable();
             $table->text('description')->nullable()->comment('Mô tả');
+            $table->timestamps();
+
+            $table->uuid('user_id')->nullable()->comment('Thuộc về Salon');
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
         // Salon
         Schema::create('salons', function (Blueprint $table) {
@@ -58,6 +64,11 @@ class SalonsMigration extends Migration
             $table->string('brand_id', 42)->nullable()->comment('ID thương hiệu (nếu có)');
             $table->foreign('brand_id')
                 ->references('id')->on('brands')
+                ->onDelete('cascade');
+
+            $table->uuid('user_id')->nullable()->comment('Thuộc về Salon');
+            $table->foreign('user_id')
+                ->references('id')->on('users')
                 ->onDelete('cascade');
         });
 
@@ -98,11 +109,11 @@ class SalonsMigration extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('salons_facilities');
+        Schema::dropIfExists('salons_facility');
         Schema::dropIfExists('salons_businesses');
         Schema::dropIfExists('salons');
         Schema::dropIfExists('brands');
-        Schema::dropIfExists('facilities');
+        Schema::dropIfExists('facility');
         Schema::dropIfExists('businesses');
     }
 }

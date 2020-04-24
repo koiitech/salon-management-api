@@ -18,6 +18,6 @@ class UserSeeder extends Seeder
       'password' => '123456'
     ]);
 
-    factory(App\User::class, 5);
+    factory(App\User::class, 5)->create();
   }
 }

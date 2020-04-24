@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    $user = App\User::first();
-    $token = $user->createToken('Token Name');
-    return $token;
+    $businesses = factory(App\Business::class, 10)->create()->pluck('id')->toArray();
+
+    dd(Arr::random($businesses, 3));
 });
