@@ -20,8 +20,8 @@ class SalonsMigration extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('image');
-            $table->softDeletes()->nullable()->comment('Xóa tạm');
-            $table->timestamps();
+            $table->softDeletesTz()->nullable()->comment('Xóa tạm');
+            $table->timestampsTz();
         });
 
         // Tiện ích
@@ -30,8 +30,8 @@ class SalonsMigration extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('image');
-            $table->timestamps();
-            $table->softDeletes()->nullable()->comment('Xóa tạm');
+            $table->timestampsTz();
+            $table->softDeletesTz()->nullable()->comment('Xóa tạm');
         });
 
         Schema::create('brands', function (Blueprint $table) {
@@ -41,7 +41,7 @@ class SalonsMigration extends Migration
             $table->text('logo')->nullable()->comment('Logo');
             $table->text('cover')->nullable()->comment('Ảnh cover');
             $table->string('address')->nullable();
-            $table->timestamps();
+            $table->timestampsTz();
 
             $table->uuid('user_id')->nullable()->comment('Thuộc về Salon');
             $table->foreign('user_id')
@@ -59,8 +59,8 @@ class SalonsMigration extends Migration
             $table->float('longitude', 10, 6)->nullable()->comment('Vĩ độ');
             $table->text('description')->nullable()->comment('Mô tả');
             $table->json('opening_hours')->nullable()->comment('Giờ mở cửa');
-            $table->timestamps();
-            $table->softDeletes()->nullable()->comment('Xóa tạm');
+            $table->timestampsTz();
+            $table->softDeletesTz()->nullable()->comment('Xóa tạm');
             $table->string('brand_id', 42)->nullable()->comment('ID thương hiệu (nếu có)');
             $table->foreign('brand_id')
                 ->references('id')->on('brands')

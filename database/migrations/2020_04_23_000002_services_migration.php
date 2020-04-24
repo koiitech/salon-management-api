@@ -19,8 +19,8 @@ class ServicesMigration extends Migration
       $table->string('image')->comment('Tên nhóm');
       $table->text('description')->comment('Mô tả');
       $table->integer('index')->default(0)->comment('Vị trí của menu');
-      $table->timestamps();
-      $table->softDeletes();
+      $table->timestampsTz();
+      $table->softDeletesTz();
       $table->uuid('salon_id')->nullable()->comment('Thuộc về Salon');
       $table->foreign('salon_id')
       ->references('id')->on('salons')
@@ -32,11 +32,11 @@ class ServicesMigration extends Migration
       $table->string('name')->comment('Tên service');
       $table->text('description')->comment('Chi tiết của service');
       $table->string('image')->nullable()->comment('Hình ảnh');
-      $table->integer('price')->comment('Giá service');
-      $table->integer('minutes')->comment('Thời gian làm service');
+      $table->float('price')->default(0)->comment('Giá service');
+      $table->integer('minutes')->default(0)->comment('Thời gian làm service');
       $table->integer('index')->default(0)->comment('Vị trí của dịch vụ');
-      $table->timestamps();
-      $table->softDeletes();
+      $table->timestampsTz();
+      $table->softDeletesTz();
       
       $table->uuid('category_id')->nullable()->comment('Danh mục chứa');
       $table->foreign('category_id')
@@ -50,8 +50,10 @@ class ServicesMigration extends Migration
       $table->text('description')->comment('Mô tả');
       $table->string('image')->nullable()->comment('Hình ảnh');
       $table->integer('index')->default(0)->comment('Bị trí của extra');
-      $table->timestamps();
-      $table->softDeletes();
+      $table->float('price')->default(0)->comment('Giá');
+      $table->integer('minutes')->default(0)->comment('Thời gian làm');
+      $table->timestampsTz();
+      $table->softDeletesTz();
 
       $table->uuid('service_id')->nullable()->comment('Thuộc về Salon');
       $table->foreign('service_id')

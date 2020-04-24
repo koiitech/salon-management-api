@@ -7,10 +7,114 @@ scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date
 "A datetime and timezone string in ISO 8601 format `Y-m-dTH:i:sO`, e.g. `2020-04-20T13:53:12+02:00`."
 scalar DateTimeTz @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTimeTz")
 
+type Query {
+    users: [User!]! @paginate(defaultCount: 10)
+    user(id: ID @eq): User @find
+}
+
+#import queries/*.graphql
+
 type User {
     id: ID!
     name: String!
     email: String!
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type Token {
+    access_token: String!
+    created_at: DateTime!
+    expires_at: DateTime!
+}
+
+type UserToken {
+    user: User!
+    token: Token!
+}
+
+type Business {
+    id: ID!
+    name: String!
+    description: String
+    image: String
+    created_at: DateTime
+}
+
+type Facility {
+    id: ID!
+    name: String!
+    description: String
+    image: String
+    created_at: DateTime
+}
+
+type Brand {
+    id: ID!
+    name: String!
+    description: String
+    logo: String
+    convert: String
+    address: String
+    created_at: DateTime
+    updated_at: DateTime
+
+    user: User! @belongsTo
+    salons: [Salon!] @hasMany
+}
+
+type Salon {
+    id: ID!
+    name: String!
+    description: String
+    logo: String
+    convert: String
+    address: String
+    address: String
+    latitude: String
+    longitude: String
+    opening_hours: String
+
+    created_at: DateTime
+    updated_at: DateTime
+
+    user: User @belongsTo
+    brand: Brand @belongsTo
+    businesses: [Business!] @belongsToMany
+    facilities: [Facility!] @belongsToMany
+    services: [Service!] @hasMany
+}
+type Category {
+    id: ID!
+    name: String!
+    description: String
+    image: String
+    index: Int
+    created_at: DateTime
+
+    salon: Salon! @belongsTo
+    services: [Service!] @hasMany
+}
+
+type Service {
+    id: ID!
+    name: String!
+    description: String
+    image: String
+    index: Int
+    created_at: DateTime
+
+    category: Category! @belongsTo
+    extras: [Extra!] @hasMany
+}
+
+type Extra {
+    id: ID!
+    name: String!
+    description: String
+    image: String
+    index: Int
+    created_at: DateTime
+
+    service: Service! @belongsTo
 }

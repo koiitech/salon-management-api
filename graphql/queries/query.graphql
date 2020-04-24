@@ -2,6 +2,15 @@
 extend type Query {
   me: User @auth
 
-  users: [User!]! @paginate()
+  users: [User!]! @paginate
   user(id: ID @eq): User @find
+
+  businesses: [Business!]! @all
+  business(id: ID @eq): Business @find
+
+  categories: [Category!]! @paginate
+  category(id: ID @eq): Category @find
+
+  salons: [Salon!] @all
+  salon(id: ID @eq): Salon @find
 }

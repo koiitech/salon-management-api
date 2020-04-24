@@ -1,75 +1,165 @@
-# extend type Mutation {
-#   "Auth"
-#   login(email: String!, password: String!): UserToken!
-#     @field(resolver: "AuthMutation@login")
-#   register(
-#     name: String! @rules(apply: ["required"])
-#     email: String! @rules(apply: ["required", "unique:users,email"])
-#     password: String! @rules(apply: ["required", "min:6", "confirmed"])
-#     password_confirmation: String! @rules(apply: ["required", "min:6"])
-#   ): User! @create
-# }
+extend type Mutation {
+    "Auth"
+    login(email: String!, password: String!): UserToken!
+        @field(resolver: "AuthMutation@login")
+    register(
+        name: String! @rules(apply: ["required"])
+        email: String! @rules(apply: ["required", "unique:users,email"])
+        password: String! @rules(apply: ["required", "min:6", "confirmed"])
+        password_confirmation: String! @rules(apply: ["required", "min:6"])
+    ): User! @create
+}
 
-# extend type Mutation @guard {
-#   createPage(
-#     title: String!
-#     slug: String!
-#     description: String
-#     content: String
-#     thumbnail: String
-#   ): Page!
-#     @create
-#     @inputPageValidation
-#     @inject(context: "user.id", name: "user_id")
+extend type Mutation {
+    createBusiness(
+        name: String!
+        description: String
+        image: String
+    ): Business! @create
 
-#   updatePage(
-#     id: ID!
-#     title: String!
-#     slug: String!
-#     description: String
-#     content: String
-#     thumbnail: String
-#   ): Page! @update @inputPageValidation
+    updateBusiness(
+        id: ID!
+        name: String!
+        description: String
+        image: String
+    ): Business! @update
 
-#   deletePage(id: ID!): Page @delete
+    deleteBusiness(id: ID!): Business @delete
 
-#   createPost(
-#     title: String!
-#     slug: String!
-#     description: String
-#     content: String
-#     thumbnail: String
-#   ): Post!
-#     @create
-#     @inputPostValidation
-#     @inject(context: "user.id", name: "user_id")
+    createFacility(
+        name: String!
+        description: String
+        image: String
+    ): Facility! @create
 
-#   updatePost(
-#     id: ID!
-#     title: String!
-#     slug: String!
-#     description: String
-#     content: String
-#     thumbnail: String
-#   ): Post! @update @inputPostValidation
+    updateFacility(
+        id: ID!
+        name: String!
+        description: String
+        image: String
+    ): Facility! @update
 
-#   deletePost(id: ID!): Post @delete
+    deleteFacility(id: ID!): Facility @delete
 
-#   createCategory(name: String!, slug: String!): Category
-#     @create
-#     @inputCategoryValidation
+    createBrand(
+        name: String!
+        description: String
+        logo: String
+        cover: String
+        address: String
+        user_id: ID!
+    ): Brand! @create
 
-#   updateCategory(id: ID!, name: String!, slug: String!): Category
-#     @update
-#     @inputCategoryValidation
+    updateBrand(
+        id: ID!
+        name: String!
+        description: String
+        logo: String
+        cover: String
+        address: String
+        user_id: ID!
+    ): Brand! @update
 
-#   deleteCategory(id: ID!): Post @delete
+    deleteBrand(id: ID!): Brand @delete
 
-#   createTag(name: String!, slug: String!): Tag @create @inputTagValidation
+    createSalon(
+        name: String!
+        description: String
+        logo: String
+        cover: String
+        address: String
+        latitude: Float
+        longitude: Float
+        opening_hours: String
+        user_id: ID!
+        brand_id: ID!
+    ): Salon! @create
 
-#   updateTag(id: ID!, name: String!, slug: String!): Tag
-#     @update
-#     @inputTagValidation
+    updateSalon(
+        id: ID!
+        name: String!
+        description: String
+        logo: String
+        cover: String
+        address: String
+        latitude: Float
+        longitude: Float
+        opening_hours: String
+        user_id: ID!
+        brand_id: ID!
+    ): Salon! @update
 
-#   deleteTag(id: ID!): Tag @delete
-# }
+    updateSalonBusinesses(
+        id: ID!
+        businesses: SyncSalonBusinesses @spread
+    ): Salon @update
+
+    updateSalonFacilities(
+        id: ID!
+        facilities: SyncSalonFacilities @spread
+    ): Salon @update
+
+    deleteSalon(id: ID!): Salon @delete
+
+    createCategory(
+        name: String!
+        description: String
+        image: String
+        index: Int
+        salon_id: ID!
+    ): Category @create
+
+    updateCategory(
+        id: ID!
+        name: String!
+        description: String
+        image: String
+        index: Int
+    ): Category @update
+
+    deleteCategory(id: ID!): Category @delete
+
+    createService(
+        name: String!
+        description: String
+        image: String
+        index: Int
+        price: Float
+        minutes: Int
+        category_id: ID!
+    ): Service @create
+
+    updateService(
+        id: ID!
+        name: String!
+        description: String
+        image: String
+        index: Int
+        price: Float
+        minutes: Int
+    ): Service @update
+
+    deleteService(id: ID!): Service @delete
+
+    createExtra(
+        name: String!
+        description: String
+        image: String
+        index: Int
+        price: Float
+        minutes: Int
+        service_id: ID!
+    ): Extra @create
+
+    updateExtra(
+        id: ID!
+        name: String!
+        description: String
+        image: String
+        index: Int
+        price: Float
+        minutes: Int
+    ): Service @update
+
+    deleteExtra(id: ID!): Extra @delete
+}

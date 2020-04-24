@@ -29,7 +29,7 @@ class AuthsMigration extends Migration
             $table->string('name')->nullable();
             $table->text('scopes')->nullable();
             $table->boolean('revoked');
-            $table->timestamps();
+            $table->timestampsTz();
             $table->dateTime('expires_at')->nullable();
         });
 
@@ -49,13 +49,13 @@ class AuthsMigration extends Migration
             $table->boolean('personal_access_client');
             $table->boolean('password_client');
             $table->boolean('revoked');
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('oauth_personal_access_clients', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('client_id');
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 

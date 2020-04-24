@@ -2,10 +2,14 @@
 scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 
 "A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
-scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+scalar DateTime
+    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
 "A datetime and timezone string in ISO 8601 format `Y-m-dTH:i:sO`, e.g. `2020-04-20T13:53:12+02:00`."
-scalar DateTimeTz @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTimeTz")
+scalar DateTimeTz
+    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTimeTz")
+
+#import ./inputs/*.graphql
 
 type Query
 #import ./queries/*.graphql
@@ -21,100 +25,103 @@ type User {
     updated_at: DateTime!
 }
 
-# type Token {
-#     access_token: String!
-#     created_at: DateTime!
-#     expires_at: DateTime!
-# }
+type Token {
+    access_token: String!
+    created_at: DateTime!
+    expires_at: DateTime!
+}
 
-# type UserToken {
-#     user: User!
-#     token: Token!
-# }
+type UserToken {
+    user: User!
+    token: Token!
+}
 
-# type Business {
-#     id: ID!
-#     name: String!
-#     description: String
-#     image: String
-#     created_at: DateTime
-# }
+type Business {
+    id: ID!
+    name: String!
+    description: String
+    image: String
+    created_at: DateTime
 
-# type Facility {
-#     id: ID!
-#     name: String!
-#     description: String
-#     image: String
-#     created_at: DateTime
-# }
+    salons: [Salon!] @belongsToMany
+}
 
-# type Brand {
-#     id: ID!
-#     name: String!
-#     description: String
-#     logo: String
-#     convert: String
-#     address: String
-#     created_at: DateTime
-#     updated_at: DateTime
+type Facility {
+    id: ID!
+    name: String!
+    description: String
+    image: String
+    created_at: DateTime
 
-#     user: User! @belongsTo
-#     salons: [Salon!]! @hasMany
-# }
+    salons: [Salon!] @belongsToMany
+}
 
-# type Salon {
-#     id: ID!
-#     name: String!
-#     description: String
-#     logo: String
-#     convert: String
-#     address: String
-#     address: String
-#     latitude: String
-#     longitude: String
-#     opening_hours: String
+type Brand {
+    id: ID!
+    name: String!
+    description: String
+    logo: String
+    convert: String
+    address: String
+    created_at: DateTime
+    updated_at: DateTime
 
-#     created_at: DateTime
-#     updated_at: DateTime
+    user: User! @belongsTo
+    salons: [Salon!] @hasMany
+}
 
-#     user: User @belongsTo
-#     brand: Brand @belongsTo
-#     businesses: [Business!] @belongsToMany
-#     facilities: [facility!] @belongsToMany
-#     services: [Service!] @hasMany
-# }
+type Salon {
+    id: ID!
+    name: String!
+    description: String
+    logo: String
+    convert: String
+    address: String
+    address: String
+    latitude: String
+    longitude: String
+    opening_hours: String
 
-# type Category {
-#     id: ID!
-#     name: String!
-#     description: String
-#     image: String
-#     index: Int
-#     created_at: DateTime
+    created_at: DateTime
+    updated_at: DateTime
 
-#     salon: Salon! @belongsTo
-#     services: [Service!] @hasMany
-# }
+    user: User @belongsTo
+    brand: Brand @belongsTo
+    businesses: [Business!] @belongsToMany
+    facilities: [Facility!] @belongsToMany
+    services: [Service!] @hasMany
+}
+type Category {
+    id: ID!
+    name: String!
+    description: String
+    image: String
+    index: Int
+    created_at: DateTime
 
-# type Service {
-#     id: ID!
-#     name: String!
-#     description: String
-#     image: String
-#     index: Int
-#     created_at: DateTime
+    salon: Salon! @belongsTo
+    services: [Service!] @hasMany
+}
 
-#     category: Category! @belongsTo
-#     extras: [Extra!] @hasMany
-# }
+type Service {
+    id: ID!
+    name: String!
+    description: String
+    image: String
+    index: Int
+    created_at: DateTime
 
-# type Extra {
-#     id: ID!
-#     name: String!
-#     description: String
-#     image: String
-#     index: Int
-#     created_at: DateTime
+    category: Category! @belongsTo
+    extras: [Extra!] @hasMany
+}
 
-#     service: Service! @belongsTo
-# }
+type Extra {
+    id: ID!
+    name: String!
+    description: String
+    image: String
+    index: Int
+    created_at: DateTime
+
+    service: Service! @belongsTo
+}
