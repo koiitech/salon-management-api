@@ -1,0 +1,7 @@
+# PUBLIC QUERIES
+extend type Query {
+  me: User @auth
+
+  users: [User!]! @paginate()
+  user(id: ID @eq): User @find
+}

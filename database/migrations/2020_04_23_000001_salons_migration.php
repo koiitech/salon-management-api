@@ -37,10 +37,10 @@ class SalonsMigration extends Migration
         Schema::create('brands', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name')->comment('Tên tiệm');
-            $table->text('cover')->nullable()->comment('Ảnh cover');
-            $table->text('logo')->nullable()->comment('Logo');
-            $table->string('address')->nullable();
             $table->text('description')->nullable()->comment('Mô tả');
+            $table->text('logo')->nullable()->comment('Logo');
+            $table->text('cover')->nullable()->comment('Ảnh cover');
+            $table->string('address')->nullable();
             $table->timestamps();
 
             $table->uuid('user_id')->nullable()->comment('Thuộc về Salon');

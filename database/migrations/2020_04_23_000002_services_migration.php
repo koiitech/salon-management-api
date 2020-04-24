@@ -23,10 +23,10 @@ class ServicesMigration extends Migration
       $table->softDeletes();
       $table->uuid('salon_id')->nullable()->comment('Thuộc về Salon');
       $table->foreign('salon_id')
-        ->references('id')->on('salons')
-        ->onDelete('cascade');
+      ->references('id')->on('salons')
+      ->onDelete('cascade');
     });
-
+    
     Schema::create('services', function (Blueprint $table) {
       $table->uuid('id')->primary();
       $table->string('name')->comment('Tên service');
@@ -34,6 +34,7 @@ class ServicesMigration extends Migration
       $table->string('image')->nullable()->comment('Hình ảnh');
       $table->integer('price')->comment('Giá service');
       $table->integer('minutes')->comment('Thời gian làm service');
+      $table->integer('index')->default(0)->comment('Vị trí của dịch vụ');
       $table->timestamps();
       $table->softDeletes();
       

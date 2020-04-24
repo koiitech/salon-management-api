@@ -1,0 +1,75 @@
+# extend type Mutation {
+#   "Auth"
+#   login(email: String!, password: String!): UserToken!
+#     @field(resolver: "AuthMutation@login")
+#   register(
+#     name: String! @rules(apply: ["required"])
+#     email: String! @rules(apply: ["required", "unique:users,email"])
+#     password: String! @rules(apply: ["required", "min:6", "confirmed"])
+#     password_confirmation: String! @rules(apply: ["required", "min:6"])
+#   ): User! @create
+# }
+
+# extend type Mutation @guard {
+#   createPage(
+#     title: String!
+#     slug: String!
+#     description: String
+#     content: String
+#     thumbnail: String
+#   ): Page!
+#     @create
+#     @inputPageValidation
+#     @inject(context: "user.id", name: "user_id")
+
+#   updatePage(
+#     id: ID!
+#     title: String!
+#     slug: String!
+#     description: String
+#     content: String
+#     thumbnail: String
+#   ): Page! @update @inputPageValidation
+
+#   deletePage(id: ID!): Page @delete
+
+#   createPost(
+#     title: String!
+#     slug: String!
+#     description: String
+#     content: String
+#     thumbnail: String
+#   ): Post!
+#     @create
+#     @inputPostValidation
+#     @inject(context: "user.id", name: "user_id")
+
+#   updatePost(
+#     id: ID!
+#     title: String!
+#     slug: String!
+#     description: String
+#     content: String
+#     thumbnail: String
+#   ): Post! @update @inputPostValidation
+
+#   deletePost(id: ID!): Post @delete
+
+#   createCategory(name: String!, slug: String!): Category
+#     @create
+#     @inputCategoryValidation
+
+#   updateCategory(id: ID!, name: String!, slug: String!): Category
+#     @update
+#     @inputCategoryValidation
+
+#   deleteCategory(id: ID!): Post @delete
+
+#   createTag(name: String!, slug: String!): Tag @create @inputTagValidation
+
+#   updateTag(id: ID!, name: String!, slug: String!): Tag
+#     @update
+#     @inputTagValidation
+
+#   deleteTag(id: ID!): Tag @delete
+# }
