@@ -1,16 +1,22 @@
 # PUBLIC QUERIES
 extend type Query {
-  me: User @auth
+    me: User @auth
 
-  users: [User!]! @paginate
-  user(id: ID @eq): User @find
+    users: [User!]! @paginate
+    user(id: ID @eq): User @find
 
-  businesses: [Business!]! @all
-  business(id: ID @eq): Business @find
+    businesses: [Business!]! @all
+    business(id: ID @eq): Business @find
 
-  categories: [Category!]! @paginate
-  category(id: ID @eq): Category @find
+    facilities: [Facility!]! @all
+    facility(id: ID @eq): Facility @find
 
-  salons: [Salon!] @all
-  salon(id: ID @eq): Salon @find
+    brands: [Brand!]! @paginate
+    brand(id: ID @eq): Brand @find
+
+    salons: [Salon!] @all
+    salon(id: ID @eq): Salon @find
+
+    categories: [Category!]! @paginate
+    category(id: ID @eq): Category @find
 }
