@@ -58,7 +58,7 @@ extend type Mutation {
         cover: String
         address: String
         user_id: ID!
-    ): Brand! @update
+    ): Brand @update
 
     deleteBrand(id: ID!): Brand @delete
 

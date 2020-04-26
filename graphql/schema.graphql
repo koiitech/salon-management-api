@@ -61,7 +61,7 @@ type Brand {
     name: String!
     description: String
     logo: String
-    convert: String
+    cover: String
     address: String
     created_at: DateTime
     updated_at: DateTime
@@ -75,7 +75,7 @@ type Salon {
     name: String!
     description: String
     logo: String
-    convert: String
+    cover: String
     address: String
     address: String
     latitude: String

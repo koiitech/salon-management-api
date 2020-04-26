@@ -12,6 +12,15 @@ class Brand extends Model
 {
   use UsesUuid, SoftDeletes;
 
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'id', 'name', 'description', 'cover', 'logo', 'address'
+  ];
+
   public function user(): BelongsTo
   {
     return $this->belongsTo(User::class);
