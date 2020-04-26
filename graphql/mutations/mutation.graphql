@@ -1,3 +1,10 @@
+scalar Upload
+    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload")
+
+type Mutation {
+    upload(image: Upload!, type: String!): String
+}
+
 extend type Mutation {
     "Auth"
     login(email: String!, password: String!): UserToken!
