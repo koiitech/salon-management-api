@@ -19,6 +19,6 @@ class Service extends Model
 
   public function extras(): HasMany
   {
-    return $this->hasMany(Extra::class);
+    return $this->hasMany(Extra::class)->orderBy('index');
   }
 }

@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Concerns\UsesUuid;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -21,13 +22,23 @@ class Brand extends Model
     'id', 'name', 'description', 'cover', 'logo', 'address'
   ];
 
-  public function user(): BelongsTo
+
+  protected static function boot()
   {
-    return $this->belongsTo(User::class);
+    parent::boot();
+
+    static::addGlobalScope('order', function (Builder $builder) {
+      $builder->orderBy('created_at', 'desc');
+    });
+  }
+
+  public function employees(): HasMany
+  {
+    return $this->hasMany(Employee::class)->orderBy('name');
   }
 
   public function salons(): HasMany
   {
-    return $this->hasMany(Salon::class);
+    return $this->hasMany(Salon::class)->orderBy('created_at');
   }
 }

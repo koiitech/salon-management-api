@@ -46,14 +46,4 @@ class User extends Authenticatable
   {
     $this->attributes['password'] = Hash::make($value);
   }
-
-  public function brand(): HasOne
-  {
-    return $this->hasOne(Brand::class);
-  }
-
-  public function salons(): HasMany
-  {
-    return $this->hasMany(Salon::class);
-  }
 }

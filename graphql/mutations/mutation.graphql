@@ -54,7 +54,6 @@ extend type Mutation {
         logo: String
         cover: String
         address: String
-        user_id: ID!
     ): Brand! @create
 
     updateBrand(
@@ -64,7 +63,6 @@ extend type Mutation {
         logo: String
         cover: String
         address: String
-        user_id: ID!
     ): Brand @update
 
     deleteBrand(id: ID!): Brand @delete
@@ -78,7 +76,6 @@ extend type Mutation {
         latitude: Float
         longitude: Float
         opening_hours: String
-        user_id: ID!
         brand_id: ID!
     ): Salon! @create
 

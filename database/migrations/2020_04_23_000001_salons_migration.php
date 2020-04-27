@@ -43,10 +43,6 @@ class SalonsMigration extends Migration
             $table->string('address')->nullable();
             $table->timestampsTz();
             $table->softDeletesTz()->comment('Xóa tạm');
-            $table->uuid('user_id')->nullable()->comment('Thuộc về Salon');
-            $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade');
         });
         // Salon
         Schema::create('salons', function (Blueprint $table) {
@@ -64,11 +60,6 @@ class SalonsMigration extends Migration
             $table->string('brand_id', 42)->nullable()->comment('ID thương hiệu (nếu có)');
             $table->foreign('brand_id')
                 ->references('id')->on('brands')
-                ->onDelete('cascade');
-
-            $table->uuid('user_id')->nullable()->comment('Thuộc về Salon');
-            $table->foreign('user_id')
-                ->references('id')->on('users')
                 ->onDelete('cascade');
         });
 
