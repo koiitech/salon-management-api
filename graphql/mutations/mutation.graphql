@@ -92,8 +92,6 @@ extend type Mutation {
         latitude: Float
         longitude: Float
         opening_hours: String
-        user_id: ID!
-        brand_id: ID!
     ): Salon! @update
 
     updateSalonBusinesses(

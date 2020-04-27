@@ -13,7 +13,14 @@ class Salon extends Model
 {
   use UsesUuid, SoftDeletes;
 
-  protected $fillable = ['id'];
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'id', 'name', 'description', 'cover', 'logo', 'address', 'latitude', 'longitude', 'opening_hours', 'brand_id', 'user_id'
+  ];
 
   public function brand(): BelongsTo
   {
