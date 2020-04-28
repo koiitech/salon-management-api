@@ -23,7 +23,7 @@ class Upload
         $file = $args['image'];
         $type = $args['type'];
 
-        $directory = ($type === "logo") ? "logos" : ($type === "cover" ? "covers" : "uploads");
+        $directory = $type === "logo" ? "logos" : ($type === "cover" ? "covers" : ($type === 'avatar' ? 'avatars' : 'uploads'));
 
         $filePath = $file->store($directory, ['disk' => 'public']);
         return Storage::url($filePath);

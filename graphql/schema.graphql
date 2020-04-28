@@ -34,6 +34,7 @@ type Employee {
     birthday: Date
     created_at: DateTime
     updated_at: DateTime
+    brand_id: ID
     brand: Brand
     salon: Salon
 }

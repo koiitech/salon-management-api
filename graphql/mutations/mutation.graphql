@@ -18,6 +18,28 @@ extend type Mutation {
 }
 
 extend type Mutation {
+    createEmployee(
+        name: String!
+        email: String
+        avatar: String
+        phone: String
+        birthday: Date
+        password: String!
+        brand_id: ID!
+    ): Employee! @create
+
+    updateEmployee(
+        id: ID!
+        name: String!
+        email: String
+        avatar: String
+        phone: String
+        birthday: Date
+        password: String
+    ): Employee! @update
+
+    deleteEmployee(id: ID!): Employee @delete
+
     createBusiness(
         name: String!
         description: String
