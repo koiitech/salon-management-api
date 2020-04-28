@@ -17,12 +17,33 @@ type Query
 type Mutation
 #import ./mutations/*.graphql
 
+type Customer {
+    id: ID!
+    name: String!
+    email: String!
+    created_at: DateTime
+    updated_at: DateTime
+}
+
+type Employee {
+    id: ID!
+    name: String!
+    email: String
+    avatar: String
+    phone: String
+    birthday: Date
+    created_at: DateTime
+    updated_at: DateTime
+    brand: Brand
+    salon: Salon
+}
+
 type User {
     id: ID!
     name: String!
     email: String!
-    created_at: DateTime!
-    updated_at: DateTime!
+    created_at: DateTime
+    updated_at: DateTime
 }
 
 type Token {
