@@ -5,7 +5,7 @@ extend type Query {
     users: [User!]! @paginate
     user(id: ID @eq): User @find
 
-    employees(brand_id: ID @where): [Employee!]! @paginate
+    employees(brand_id: ID @where, salon_id: ID @where): [Employee!]! @paginate
     employee(id: ID @eq): Employee @find
 
     businesses: [Business!]! @all
@@ -21,6 +21,6 @@ extend type Query {
     salons: [Salon!] @all
     salon(id: ID @eq): Salon @find
 
-    categories: [Category!]! @paginate
+    categories(salon_id: ID @where): [Category!]! @all
     category(id: ID @eq): Category @find
 }

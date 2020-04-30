@@ -131,8 +131,9 @@ type Service {
     description: String
     image: String
     index: Int
-    created_at: DateTime
-
+    price: Float
+    created_at: DateTimeTz
+    updated_at: DateTimeTz
     category: Category! @belongsTo
     extras: [Extra!] @hasMany
 }
@@ -143,7 +144,9 @@ type Extra {
     description: String
     image: String
     index: Int
-    created_at: DateTime
+    price: Float
+    created_at: DateTimeTz
+    updated_at: DateTimeTz
 
     service: Service! @belongsTo
 }

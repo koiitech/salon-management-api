@@ -16,8 +16,8 @@ class ServicesMigration extends Migration
     Schema::create('categories', function (Blueprint $table) {
       $table->uuid('id')->primary();
       $table->string('name')->comment('Tên nhóm');
-      $table->string('image')->comment('Tên nhóm');
-      $table->text('description')->comment('Mô tả');
+      $table->string('image')->nullable()->comment('Tên nhóm');
+      $table->text('description')->nullable()->comment('Mô tả');
       $table->integer('index')->default(0)->comment('Vị trí của menu');
       $table->timestampsTz();
       $table->softDeletesTz();
@@ -30,7 +30,7 @@ class ServicesMigration extends Migration
     Schema::create('services', function (Blueprint $table) {
       $table->uuid('id')->primary();
       $table->string('name')->comment('Tên service');
-      $table->text('description')->comment('Chi tiết của service');
+      $table->text('description')->nullable()->comment('Chi tiết của service');
       $table->string('image')->nullable()->comment('Hình ảnh');
       $table->float('price')->default(0)->comment('Giá service');
       $table->integer('minutes')->default(0)->comment('Thời gian làm service');
@@ -47,7 +47,7 @@ class ServicesMigration extends Migration
     Schema::create('extras', function (Blueprint $table) {
       $table->uuid('id')->primary();
       $table->string('name')->comment('Tên extra');
-      $table->text('description')->comment('Mô tả');
+      $table->text('description')->nullable()->comment('Mô tả');
       $table->string('image')->nullable()->comment('Hình ảnh');
       $table->integer('index')->default(0)->comment('Bị trí của extra');
       $table->float('price')->default(0)->comment('Giá');
