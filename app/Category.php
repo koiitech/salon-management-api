@@ -12,6 +12,15 @@ class Category extends Model
 {
   use UsesUuid, SoftDeletes;
 
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'id', 'name', 'description', 'image', 'index', 'salon_id'
+  ];
+
   public function salon(): BelongsTo
   {
     return $this->belongsTo(Salon::class);

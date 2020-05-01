@@ -183,7 +183,7 @@ extend type Mutation {
         index: Int
         price: Float
         minutes: Int
-    ): Service @update
+    ): Extra @update
 
     deleteExtra(id: ID!): Extra @delete
 }

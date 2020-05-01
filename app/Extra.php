@@ -11,6 +11,13 @@ class Extra extends Model
 {
   use UsesUuid, SoftDeletes;
 
+   /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = ["id", "name", "price", "index", "image", "minutes", "description", "service_id"];
+
   public function service(): BelongsTo
   {
     return $this->belongsTo(Service::class);

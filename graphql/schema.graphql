@@ -131,6 +131,7 @@ type Service {
     description: String
     image: String
     index: Int
+    minutes: Int
     price: Float
     created_at: DateTimeTz
     updated_at: DateTimeTz
@@ -144,6 +145,7 @@ type Extra {
     description: String
     image: String
     index: Int
+    minutes: Int
     price: Float
     created_at: DateTimeTz
     updated_at: DateTimeTz

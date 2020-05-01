@@ -5,6 +5,8 @@ namespace App\GraphQL\Mutations;
 use GraphQL\Type\Definition\ResolveInfo;
 use Illuminate\Support\Facades\Storage;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
+use Illuminate\Support\Str;
+
 
 class Upload
 {
@@ -23,7 +25,7 @@ class Upload
         $file = $args['image'];
         $type = $args['type'];
 
-        $directory = $type === "logo" ? "logos" : ($type === "cover" ? "covers" : ($type === 'avatar' ? 'avatars' : 'uploads'));
+        $directory = !$type ? "uploads" : Str::plural($type);
 
         $filePath = $file->store($directory, ['disk' => 'public']);
         return Storage::url($filePath);
