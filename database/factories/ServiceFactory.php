@@ -29,7 +29,7 @@ $factory->define(Category::class, function (Faker $faker) {
   return [
     'name' => $faker->sentence($nbWords = 3, $variableNbWords = true),
     'description' => $faker->paragraph,
-    'image' => $faker->imageUrl(300, 300),
+    // 'image' => $faker->imageUrl(300, 300),
   ];
 });
 
@@ -37,7 +37,7 @@ $factory->define(Service::class, function (Faker $faker) {
   return [
     'name' => $faker->sentence($nbWords = 4, $variableNbWords = true),
     'description' => $faker->paragraph,
-    'image' => $faker->imageUrl(300, 300),
+    // 'image' => $faker->imageUrl(300, 300),
     'price' => Arr::random([10, 15, 20, 25, 30]),
     'minutes' => Arr::random([5, 10, 15]),
   ];
@@ -47,6 +47,6 @@ $factory->define(Extra::class, function (Faker $faker) {
   return [
     'name' => $faker->sentence($nbWords = 2, $variableNbWords = true),
     'description' => $faker->paragraph,
-    'image' => $faker->imageUrl(300, 300),
+    // 'image' => $faker->imageUrl(300, 300),
   ];
 });

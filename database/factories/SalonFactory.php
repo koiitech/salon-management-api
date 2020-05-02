@@ -25,7 +25,7 @@ $factory->define(Business::class, function (Faker $faker) {
   return [
     'name' => $faker->sentence($nbWords = 4, $variableNbWords = true),
     'description' => $faker->paragraph,
-    'image' => $faker->imageUrl(300, 300),
+    // 'image' => $faker->imageUrl(300, 300),
   ];
 });
 
@@ -33,7 +33,7 @@ $factory->define(Facility::class, function (Faker $faker) {
   return [
     'name' => $faker->sentence($nbWords = 4, $variableNbWords = true),
     'description' => $faker->paragraph,
-    'image' => $faker->imageUrl(300, 300),
+    // 'image' => $faker->imageUrl(300, 300),
   ];
 });
 
@@ -41,8 +41,8 @@ $factory->define(Brand::class, function (Faker $faker) {
   return [
     'name' => $faker->sentence($nbWords = 4, $variableNbWords = true),
     'description' => $faker->paragraph,
-    'logo' => $faker->imageUrl(300, 300),
-    'cover' => $faker->imageUrl(900, 250),
+    // 'logo' => $faker->imageUrl(300, 300),
+    // 'cover' => $faker->imageUrl(900, 250),
     'address' => $faker->address,
   ];
 });
@@ -51,8 +51,8 @@ $factory->define(Salon::class, function (Faker $faker) {
   return [
     'name' => $faker->sentence($nbWords = 4, $variableNbWords = true),
     'description' => $faker->paragraph,
-    'logo' => $faker->imageUrl(300, 300),
-    'cover' => $faker->imageUrl(900, 250),
+    // 'logo' => $faker->imageUrl(300, 300),
+    // 'cover' => $faker->imageUrl(900, 250),
     'address' => $faker->address,
   ];
 });
