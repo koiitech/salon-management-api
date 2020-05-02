@@ -8,6 +8,9 @@ extend type Query {
     employees(brand_id: ID @where, salon_id: ID @where): [Employee!]! @paginate
     employee(id: ID @eq): Employee @find
 
+    customers: [Customer!]! @paginate
+    customer(id: ID @eq): Customer @find
+
     businesses: [Business!]! @all
     business(id: ID @eq): Business @find
 
@@ -18,7 +21,7 @@ extend type Query {
     brand(id: ID @eq): Brand @find
     searchBrands(name: String! @where(operator: "like")): Brand @paginate
 
-    salons: [Salon!] @all
+    salons(brand_id: ID @where): [Salon!] @all
     salon(id: ID @eq): Salon @find
 
     categories(salon_id: ID @where): [Category!]! @all

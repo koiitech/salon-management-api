@@ -38,7 +38,28 @@ extend type Mutation {
         password: String
     ): Employee! @update
 
+    updateEmployeeSalon(id: ID!, salon_id: ID!): Employee @update
+
     deleteEmployee(id: ID!): Employee @delete
+
+    createCustomer(
+        name: String!
+        email: String
+        avatar: String
+        phone: String
+        birthday: Date
+        password: String!
+    ): Customer! @create
+
+    updateCustomer(
+        id: ID!
+        name: String!
+        email: String
+        avatar: String
+        phone: String
+        birthday: Date
+        password: String
+    ): Customer! @update
 
     createBusiness(
         name: String!

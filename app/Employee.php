@@ -23,7 +23,7 @@ class Employee extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'phone', 'birthday', 'brand_id'
+        'name', 'email', 'password', 'avatar', 'phone', 'birthday', 'brand_id', 'salon_id'
     ];
 
     /**
@@ -46,13 +46,13 @@ class Employee extends Authenticatable
 
     protected static function boot()
     {
-      parent::boot();
-  
-      static::addGlobalScope('order', function (Builder $builder) {
-        $builder->orderBy('created_at', 'desc');
-      });
+        parent::boot();
+
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('created_at', 'desc');
+        });
     }
-    
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);

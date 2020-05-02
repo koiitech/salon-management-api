@@ -19,7 +19,7 @@ class SalonsMigration extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->softDeletesTz()->comment('Xóa tạm');
             $table->timestampsTz();
         });
@@ -28,8 +28,8 @@ class SalonsMigration extends Migration
         Schema::create('facilities', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->text('description');
-            $table->string('image');
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
             $table->timestampsTz();
             $table->softDeletesTz()->comment('Xóa tạm');
         });

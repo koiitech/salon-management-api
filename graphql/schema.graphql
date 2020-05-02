@@ -21,6 +21,9 @@ type Customer {
     id: ID!
     name: String!
     email: String!
+    avatar: String
+    phone: String
+    birthday: Date
     created_at: DateTime
     updated_at: DateTime
 }
@@ -35,6 +38,7 @@ type Employee {
     created_at: DateTime
     updated_at: DateTime
     brand_id: ID
+    salon_id: ID
     brand: Brand
     salon: Salon
 }
