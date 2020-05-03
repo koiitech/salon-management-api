@@ -9,6 +9,9 @@ scalar DateTime
 scalar DateTimeTz
     @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTimeTz")
 
+scalar Upload
+    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload")
+
 #import ./inputs/*.graphql
 
 type Query
@@ -155,4 +158,21 @@ type Extra {
     updated_at: DateTimeTz
 
     service: Service! @belongsTo
+}
+
+type Appointment {
+    id: ID!
+    customer: Customer
+    salon: Salon
+    employee: Employee
+    scheduled_at: DateTime
+    checkedin_at: DateTime
+    started_at: DateTime
+    finished_at: DateTime
+    details: [AppointmentDetail]
+}
+
+type AppointmentDetail {
+    id: ID!
+    service: Service
 }

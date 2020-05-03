@@ -1,7 +1,11 @@
-input SyncSalonBusinesses {
+input BusinessIds {
     sync: [ID!]
 }
 
-input SyncSalonFacilities {
+input FacilityIds {
+    sync: [ID!]
+}
+
+input ServiceIds {
     sync: [ID!]
 }
