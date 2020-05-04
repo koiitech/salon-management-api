@@ -12,6 +12,11 @@ extend type Mutation {
         password: String! @rules(apply: ["required", "min:6", "confirmed"])
         password_confirmation: String! @rules(apply: ["required", "min:6"])
     ): User! @create
+
+    "Employee Login"
+    loginEmployee(email: String!, password: String!): EmployeeToken!
+        @field(resolver: "AuthMutation@loginEmployee")
+    
 }
 
 extend type Mutation {
@@ -212,7 +217,6 @@ extend type Mutation {
     updateAppointment(
         id: ID!
         employee_id: ID
-        scheduled_at: String
         services: ServiceIds @spread
     ): Appointment @update
 }
