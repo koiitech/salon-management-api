@@ -16,7 +16,6 @@ extend type Mutation {
     "Employee Login"
     loginEmployee(email: String!, password: String!): EmployeeToken!
         @field(resolver: "AuthMutation@loginEmployee")
-    
 }
 
 extend type Mutation {

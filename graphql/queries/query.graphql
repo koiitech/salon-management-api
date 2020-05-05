@@ -28,3 +28,8 @@ extend type Query {
     categories(salon_id: ID @where): [Category!]! @all
     category(id: ID @eq): Category @find
 }
+
+extend type Query {
+    "Customer checkin - Cần phải đăng nhập tại salon"
+    checkin(phone: String! @eq): Customer! @find
+}
