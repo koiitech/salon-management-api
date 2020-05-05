@@ -30,4 +30,9 @@ class Category extends Model
   {
     return $this->hasMany(Service::class)->orderBy('index');
   }
+
+  public function children(): HasMany
+  {
+    return $this->hasMany(Service::class)->orderBy('index');
+  }
 }

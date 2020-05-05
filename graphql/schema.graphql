@@ -136,6 +136,7 @@ type Category {
 
     salon: Salon! @belongsTo
     services: [Service!] @hasMany
+    children: [Service!] @hasMany
 }
 
 type Service {
@@ -150,6 +151,7 @@ type Service {
     updated_at: DateTimeTz
     category: Category! @belongsTo
     extras: [Extra!] @hasMany
+    children: [Extra!] @hasMany
 }
 
 type Extra {

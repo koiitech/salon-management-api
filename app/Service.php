@@ -28,4 +28,9 @@ class Service extends Model
   {
     return $this->hasMany(Extra::class)->orderBy('index');
   }
+
+  public function children(): HasMany
+  {
+    return $this->hasMany(Extra::class)->orderBy('index');
+  }
 }
