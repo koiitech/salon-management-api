@@ -177,10 +177,12 @@ type Appointment {
     checkedin_at: DateTime
     started_at: DateTime
     finished_at: DateTime
-    details: [AppointmentDetail]
+    services: [Service!] @belongsToMany
+    details: [AppointmentDetail!] @hasMany
 }
 
 type AppointmentDetail {
     id: ID!
-    service: Service
+    service: Service @belongsTo
+    extras: [ID!]
 }

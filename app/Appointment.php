@@ -5,6 +5,7 @@ namespace App;
 use App\Models\Concerns\UsesUuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Appointment extends Model
@@ -36,5 +37,10 @@ class Appointment extends Model
   public function details(): HasMany
   {
     return $this->hasMany(AppointmentDetail::class);
+  }
+
+  public function services(): BelongsToMany
+  {
+    return $this->belongsToMany(Service::class, AppointmentDetail::class, 'appointment_id', 'service_id');
   }
 }

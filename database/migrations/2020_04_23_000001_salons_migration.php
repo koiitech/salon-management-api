@@ -82,8 +82,8 @@ class SalonsMigration extends Migration
          * Bảng liên kết Salons - Facilities ( n-n )
          */
         Schema::create('salons_facilities', function (Blueprint $table) {
-            $table->string('salon_id', 42);
-            $table->string('facility_id', 42);
+            $table->uuid('salon_id');
+            $table->uuid('facility_id');
             $table->foreign('salon_id')
                 ->references('id')->on('salons')
                 ->onDelete('cascade');

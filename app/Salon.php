@@ -32,9 +32,9 @@ class Salon extends Model
     });
   }
 
-  public function staffs(): HasMany
+  public function employees(): HasMany
   {
-    return $this->hasMany(Staff::class)->orderBy('name');
+    return $this->hasMany(Employee::class)->orderBy('name');
   }
 
 

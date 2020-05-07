@@ -210,12 +210,8 @@ extend type Mutation {
         salon_id: ID!
         employee_id: ID
         scheduled_at: String
-        services: ServiceIds @spread
+        details: AppointmentDetailsInput 
+        services: AppointmentServicesInput
     ): Appointment @create
 
-    updateAppointment(
-        id: ID!
-        employee_id: ID
-        services: ServiceIds @spread
-    ): Appointment @update
 }

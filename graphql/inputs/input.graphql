@@ -6,6 +6,25 @@ input FacilityIds {
     sync: [ID!]
 }
 
-input ServiceIds {
+input AppointmentDetailsInput {
+    create: [CreateAppointmentDetailsInput!]
+    connect: [ID!]
     sync: [ID!]
 }
+
+input CreateAppointmentDetailsInput {
+    service_id: ID!
+    extras: [ID!]
+}
+
+input AppointmentServicesInput {
+    create: [CreateAppointmentServicesInput!]
+    connect: [ID!]
+    sync: [ID!]
+}
+
+input CreateAppointmentServicesInput {
+    service_id: ID!
+    extras: [ID]
+}
+

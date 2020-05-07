@@ -30,11 +30,9 @@ class AppointmentsMigration extends Migration
     });
 
     Schema::create('appointment_details', function (Blueprint $table) {
-      $table->uuid('id')->primary();
+      $table->id();
       $table->uuid('appointment_id');
       $table->uuid('service_id');
-      $table->timestampsTz();
-
       $table->foreign('appointment_id')->references('id')->on('appointments');
       $table->foreign('service_id')->references('id')->on('services');
     });
