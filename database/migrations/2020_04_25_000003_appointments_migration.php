@@ -33,6 +33,7 @@ class AppointmentsMigration extends Migration
       $table->id();
       $table->uuid('appointment_id');
       $table->uuid('service_id');
+      $table->mediumText('extras');
       $table->foreign('appointment_id')->references('id')->on('appointments');
       $table->foreign('service_id')->references('id')->on('services');
     });
